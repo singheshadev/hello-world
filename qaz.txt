@@ -1,2 +1,6 @@
 qasdd
+<<<<<<< Updated upstream
 cr7
+=======
+lm
+>>>>>>> Stashed changes
