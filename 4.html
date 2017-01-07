@@ -1,0 +1,78 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+var app1 = angular.module('myapp1', []);
+app1.controller('myctrl1', function($scope) {
+    $scope.name2 = "John Doe";
+   
+});
+</script>
+<script>
+var app = angular.module('myapp', []);
+app.controller('myctrl', function($scope) {
+    $scope.name1 = "John Doe";
+   
+});</script>
+
+<style>
+#a1 
+{
+  height:100px;
+  width:100%;
+  background-color:red;
+  
+}
+#a2
+{ float:left;
+  height:500px;
+  width:250px;
+  background-color:blue;
+}
+#a3
+{ float:right;
+  position:relative;
+  height:500px;
+  width:250px;
+  background-color:blue;
+}
+#a4
+{ position:relative;float:right;
+
+  height:550px;
+  width:250px;
+  background-color:orange;
+}
+#a5
+{
+position:relative;float:down;
+float:left;
+  height:1050px;
+  width:250px;
+  background-color:orange;
+
+}
+body{margin:0px;
+padding:0px;}
+</style>
+<body>
+<div id = "a1" ng-app="myapp" ng-controller="myctrl" overflow="hidden">
+
+<marquee direction="right"  style="text-align:center" width="50%"><h1>{{name1}}</h1></marquee>
+</div>
+<div id="a2">
+<marquee direction="right"  style="text-align:center" width="50%"><h1>1234</h1></marquee>
+</div>
+<div id="a3">
+</div>
+<div id="a4">
+</div>
+<div  ng-app="myapp" ng-controller="myctrl">
+<input ng-model="name2">{{name1}}
+</div>
+<div id="a5">
+</div>
+</body>
+</html>
+ 
+ 
