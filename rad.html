@@ -7,7 +7,30 @@ var app = angular.module('myapp', []);
 app.controller('myctrl', function($scope) {$scope.name1="myweb";
    
 });</script>
+<script>
+var app1 = angular.module('myapp1', []);
+app.controller('myctrl1', function($scope) {$scope.name2="myweb";
+   
+});</script>
 <script type="text/javascript">
+
+var myImage = document.getElementById("mainImage");
+
+//changeImage();
+
+var imageArray = ["img1.jpg","img2.jpg","img3.jpg"];
+
+var imageIndex = 0; 
+
+function changeImage() {
+document.getElementById("asd").innerHTML="<img src="+imageArray[imageIndex] +" alt='mv' style='width:304px;height:228px'>" 
+imageIndex++;
+if(imageIndex>2){imageIndex=0;}
+setTimeout(changeImage, 500);
+}
+setTimeout(changeImage, 500);
+
+
 function myfunc()
 {document.getElementById("qwe").innerHTML="<img src='img1.jpg' alt='mv' style='width:304px;height:228px'>" 
 }
@@ -21,7 +44,12 @@ function myfunc2()
 <style>
 a:hover,a:active
 {color:green}
- 
+ .fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
 #a1 
 {
   height:100px;
@@ -58,10 +86,17 @@ float:left;
   background-color:orange;
 
 }
+#a6 
+{
+  height:600px;
+  width:100%;
+  background-color:lightblue;
+  
+}
 body{margin:0px;
 padding:0px;}
 </style>
-<body>
+<body >
 <div id="a1" ng-app="myapp" ng-controller="myctrl" overflow="hidden" >
 <input ng-model="name1">
 <marquee direction="right"  style="text-align:center" width="50%"><h1>{{name1}}</h1></marquee>
@@ -74,15 +109,20 @@ padding:0px;}
 </div>
 <div id="a4">
 </div>
-<div  >
-<input ng-model="name2">{{name1}}
+<div  ng-app="myapp1" ng-controller="myctrl1" overflow="hidden">
+<input ng-model="name2">{{name2}}
 </div>
 <div >
 <input type="radio" onclick="myfunc()"   name="sel" value="1" checked>value1</input>
 
 <input type="radio" onclick="myfunc1()" name="sel" value="2" >value2</input>
 <input type="radio" onclick="myfunc2()" name="sel" value="3" >value3</input>
-<p id="qwe"><img src="img1.jpg" alt="my" style="height:200px;width:320px"</p>
+<p id="qwe"><img src="img1.jpg" alt="my" style="height:200px;width:320px"></p>
+
+</div>
+<div id="a6" class="fade">
+<p id="asd"></p>
+
 </div>
 </body>
 </html>
