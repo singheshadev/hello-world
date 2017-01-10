@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Made with Thimble</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script>
+  var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function ($scope,$http){
+      $http.get("http://www.w3schools.com/angular/customers.php").then(function(response){$scope.names=response.data.records;});
+      
+    $scope.name="abcd";});
+  </script>
+</head>
+  <script src="script-1.js"></script>
+<body>
+
+  <h1>Welcome to Thimble</h1>
+
+  <p>Make something <strong>amazing</strong> with the web!</p>
+ <button onclick="greetMe('hello world')">
+   click me
+  </button>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <input ng-model="name">
+  {{name}}
+  <br>
+  <table>
+    <tr ng-repeat="x in names">
+    <td ng-if="$odd" style="background-color:#f1f1f1">{{x.Name}}
+      
+      </td>
+      <td ng-if="$odd" style="background-color:#f1f1f1">{{x.Country}}
+
+      </td>
+      <td ng-if="$even">{{x.Name}}
+
+      </td>
+      <td ng-if="$even" >{{x.Country}}
+
+      </td>
+    </tr>
+  </table>
+  </div>         
+</body>
+</html>
