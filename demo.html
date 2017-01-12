@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html >
+<style>
+
+#a1
+{float:left;
+  height: 200px;
+    width: 40%;
+      background-color: powderblue;
+}
+
+#a2
+{float:right;
+  height: 200px;
+    width: 40%;
+      background-color: powderblue;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+   
+var qw;
+var rawFile;
+var data;
+var allText;
+var rawFile1;
+var data1;
+var allText1;
+var lp="";
+var z1;
+function readTextFile()
+{qw="";z1="";
+     rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "abc.txt", true);   
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+             allText = rawFile.responseText;
+             data =allText.split("\n");
+       
+        }
+    }
+  
+
+    rawFile.send();
+    
+    lp=lp+"<select id='sel1'> ";alert(" ");
+    
+  for(var i=1;i<data.length&&i<80;i++)
+  {
+     var ty1=data[i].split(",");
+       lp=lp+"<option>" + ty1[0] + "</option>";
+      
+     
+   }
+    lp=lp+"</select>";
+    document.getElementById("demo").innerHTML=lp;
+}
+
+ function readTextFile1()
+{//rawFile.abort();
+     rawFile = new XMLHttpRequest();
+    rawFile.open("POST", "locations.txt", true); 
+    alert(rawFile.status); 
+    rawFile.onreadystatechange = function ()
+    {  alert("dd");
+        if(rawFile.readyState === 4)
+        {alert("sbx");
+             allText1 = rawFile.responseText;
+             data1=allText1.split("\n");
+       
+        }
+    } //rawFile.send();
+    z1=data[0];
+    alert(z1);
+  Insertcols();
+}
+function getcc()
+{
+  for(var i=1;i<data.length&&i<80;i++)
+  {
+    var r=data[i].split(",");
+    var t=document.getElementById("sel1").value;
+    if(t==r[0])
+    {
+     document.getElementById("cc").value=r[1];
+    }  
+  }
+
+
+}var p1="";
+    function Insertcols()
+    {
+     var t1=z1.split(",");
+     for(var qs=0;qs<t1.length;qs++)
+     {var re="movleft"+qs+"()";
+       p1=p1+" "+t1[qs]+" "+" <button onclick="+re+"> >> </button><br>";
+
+     }alert(p1);
+     document.getElementById("demo1").innerHTML=p1;
+    }
+    function movleft0(){
+      var abc="ZIP";
+      document.getElementById("demo4").innerHTML=abc;
+    }
+    function movleft1(){
+           var abc="country code";
+      document.getElementById("demo5").innerHTML=abc;
+    }
+    function movleft2(){
+           var abc="city";
+      document.getElementById("demo6").innerHTML=abc;
+    }
+    function movleft3(){
+           var abc="st";
+      document.getElementById("demo7").innerHTML=abc;
+    }
+    function movleft4(){
+           var abc="country";
+      document.getElementById("demo8").innerHTML=abc;
+    }
+ 
+</script>
+<body onload="readTextFile()">
+ <p id="demo">ss</p><br>
+ <input type="text" id="cc">
+ <button onclick="getcc()">get cc</button><br>
+ 
+
+<br><button onclick="readTextFile1()">get col</button>
+ <p id="demo3"> </p>
+
+<div id= "a1">
+ <p id="demo1"></p>
+</div>
+<div id="a2"><p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+</div>
+</body>
+</html>
